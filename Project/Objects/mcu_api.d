@@ -1,0 +1,9 @@
+.\objects\mcu_api.o: ..\mcu_sdk\src\mcu_api.c
+.\objects\mcu_api.o: ..\mcu_sdk\inc\config.h
+.\objects\mcu_api.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\mcu_api.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\mcu_api.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\mcu_api.o: ..\mcu_sdk\inc\mcu_api.h
+.\objects\mcu_api.o: ..\mcu_sdk\inc\system.h
+.\objects\mcu_api.o: ..\mcu_sdk\inc\protocol.h
+.\objects\mcu_api.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

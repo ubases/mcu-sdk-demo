@@ -1,0 +1,67 @@
+
+在protocol.c文件上替换一下内容：
+
+1. 添加一下头文件
+#include "usart.h"
+
+
+2. 替换以下函数
+/**
+ * @brief   串口发送数据函数
+ * 
+ * @note    该函数需由客户适配好对于发送接口。即MCU_SDK调用该函数，即可将数据通过串口发送给模组
+ * 
+ * @param[in]   dataBuff        待发送的数据
+ * @param[in]   dataLen         数据长度
+ * @return  unsigned char            返回发送结果
+ *          0：发送成功
+ *          -1：发送失败
+ * 
+ * @author  Ai-Thinker (zhuolm@tech-now.com)
+ * @date    2022-06-23
+ */
+char UartWriteData(unsigned char *dataBuff, unsigned char dataLen)
+{
+	//#error "请将MCU串口发送函数填入该函数,并删除该行"	
+	USART2SendDatas(dataBuff, dataLen);
+	return 0;
+}
+
+3. 在下面函数打开注释
+/**
+ * @brief   MCU向模组上报所有的状态数据
+ * 
+ * 
+ * @author  Ai-Thinker (zhuolm@tech-now.com)
+ * @date    2022-06-29
+ */
+void ReportAllDeviceState(void)
+{
+    //#error "请在此处理可下发可上报数据及只上报数据示例,处理完成后删除该行"
+    
+    UartReportBoolTypeData(CMD_SWITCH, switch_status);
+    UartReportEnumTypeData(CMD_MODE, mode_status);
+    UartReportEnumTypeData(CMD_SPEED, speed_status);
+    UartReportValueTypeData(CMD_TEMP, temp_status);
+    UartReportValueTypeData(CMD_HUMIDITY, humidity_status);
+    UartReportValueTypeData(CMD_PM25, pm25_status);
+    UartReportValueTypeData(CMD_TVOC, tvoc_status);
+    UartReportValueTypeData(CMD_ECO2, eco2_status);
+    UartReportEnumTypeData(CMD_AIR_QUALITY, air_quality_status);
+    UartReportValueTypeData(CMD_FILTER, filter_status);
+    UartReportValueTypeData(CMD_FILTER_DAYS, filter_days_status);
+    UartReportBoolTypeData(CMD_FILTER_RESET, filter_reset_status);
+    UartReportEnumTypeData(CMD_FAULT_CODE, fault_code_status);
+    UartReportEnumTypeData(CMD_FAULT_TYPE, fault_type_status);
+    UartReportValueTypeData(CMD_TOTAL_TIME, total_time_status);
+    UartReportValueTypeData(CMD_TOTAL_PM, total_pm_status);
+    UartReportEnumTypeData(CMD_TEMP_UNIT_CONVERT, temp_unit_convert_status);
+    UartReportValueTypeData(CMD_METHANAL, methanal_status);
+    UartReportBoolTypeData(CMD_ANION, anion_status);
+    UartReportBoolTypeData(CMD_UV, uv_status);
+    UartReportBoolTypeData(CMD_LOCK, lock_status);
+    UartReportEnumTypeData(CMD_LIGHT, light_status);
+    UartReportBoolTypeData(CMD_Y_10, y_10_status);
+}
+
+
